@@ -9,14 +9,14 @@
 
 </head>
 <body >
-<button id="ajaxTest">dianji </button>
+<button id="ajaxTest">注册</button>
 
 <script>
     $().ready(function () {
         $("#ajaxTest").click(function () {
                         $.ajax({
                             type:"POST",
-                            url:"http://localhost/mt_iot/index.php/User/add",
+                            url:"http://localhost：9006/index.php/User/add",
                             data:{name:"liuyi",phoneNumber:"15366126076",password:"123456"},
                             success:function (data) {
                                 alert(data);

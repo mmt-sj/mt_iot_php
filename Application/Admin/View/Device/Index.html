@@ -1,0 +1,24 @@
+<div class="form-inline">
+    <button class="btn btn-default">新增</button>
+</div>
+<table class="table table-responsive table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>编号</th>
+            <th>类型</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <foeach name="list" item="vo">
+        <tr>
+            <td>{$vo['deviceId']}</td>
+            <td>{$vo['deviceNumber']}</td>
+            <td>{$vo['deviceType']}</td>
+            <td>
+                <a class="btn btn-info btn-xs">编辑</a>
+                <a class="btn btn-danger btn-xs">删除</a>
+            </td>
+        </tr>
+    </foeach>
+</table>

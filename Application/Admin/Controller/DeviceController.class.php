@@ -9,7 +9,13 @@
 namespace Admin\Controller;
 
 
-class DeviceController
-{
+use Think\Controller;
 
+class DeviceController extends Controller
+{
+    public function index(){
+        $Device=M('Device');
+        $this->assign('list',$Device);
+        $this->display();
+    }
 }
