@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<link href="../../../Public/Static/Dist/flat/css/flat-ui.min.css" type="text/css" rel="stylesheet">
-<link href="../../../Public/Static/Dist/flat/css/vendor/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
-<script src="../../../Public/Static/Dist/flat/js/vendor/jquery.min.js"></script>
-<script src="../../../Public/Static/Dist/flat/js/vendor/html5shiv.js"></script>
-<script src="../../../Public/Static/Dist/flat/js/vendor/respond.min.js"></script>
-<script src="../../../Public/Static/Dist/flat/js/flat-ui.min.js"></script>
+<link href="/Public/Static/Dist/flat/css/vendor/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="/Public/Static/Dist/flat/css/flat-ui.min.css" type="text/css" rel="stylesheet">
+<script src="/Public/Static/Dist/flat/js/vendor/jquery.min.js"></script>
+<script src="./Public/Static/Dist/flat/js/vendor/html5shiv.js"></script>
+<script src="/Public/Static/Dist/flat/js/vendor/respond.min.js"></script>
+<script src="/Public/Static/Dist/flat/js/flat-ui.min.js"></script>
 <body>
 
 <nav class="navbar navbar-default" role="navigation">
@@ -21,7 +21,7 @@
     </div>
     <div class="collapse navbar-collapse" id="navbar-collapse-01">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#fakelink">设备管理</a></li>
+            <li class="active"><a href="Index">设备管理</a></li>
             <li><a href="#fakelink">用户管理</a></li>
         </ul>
         <form class="navbar-form navbar-right" action="#" role="search">
@@ -38,7 +38,7 @@
 </nav><!-- /navbar -->
 <div class="container">
     <div class="form-inline">
-    <button class="btn btn-default">新增</button>
+    <a class="btn btn-xs btn-primary" href="<?php echo U('Device/add');?>">新增</a>
 </div>
 <table class="table table-responsive table-bordered">
     <thead>
@@ -49,17 +49,15 @@
             <th>操作</th>
         </tr>
     </thead>
-    <foeach name="list" item="vo">
-        <tr>
-            <td><?php echo ($vo['deviceId']); ?></td>
-            <td><?php echo ($vo['deviceNumber']); ?></td>
-            <td><?php echo ($vo['deviceType']); ?></td>
+    <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+            <td><?php echo ($vo["device_id"]); ?></td>
+            <td><?php echo ($vo["device_number"]); ?></td>
+            <td><?php echo ($vo["device_type"]); ?></td>
             <td>
-                <a class="btn btn-info btn-xs">编辑</a>
-                <a class="btn btn-danger btn-xs">删除</a>
+                <a class="btn btn-info btn-xs" href=<?php echo U('Device/add',array('id'=>$vo['device_id']));?> >编辑</a>
+                <a class="btn btn-danger btn-xs" href=<?php echo U('Device/delete',array('id'=>$vo['device_id']));?> >删除</a>
             </td>
-        </tr>
-    </foeach>
+        </tr><?php endforeach; endif; else: echo "" ;endif; ?>
 </table>
 </div>
 

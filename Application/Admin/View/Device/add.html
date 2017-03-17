@@ -1,0 +1,35 @@
+<form class="form-horizontal" action="{:U('Device/addPost')}" method="post" >
+    <div class="form-group">
+        <input class="hidden" name="device_id" value="{$data.device_id}" >
+        <label class="control-label  col-sm-2">设备编号</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="device_number" name="device_number" value="{$data.device_number}" placeholder="输入设备编号" required >
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label  col-sm-2">设备类型</label>
+        <div class="col-sm-2">
+            <select  class="form-control select select-primary select-block mbl" id="device_type" name="device_type" >
+                <option value="0"
+                <if condition="($data.device_type eq 0)"> selected="selected" </if>
+                >电磁阀控制器</option>
+                <option value="1"
+                <if condition="($data.device_type eq 1)"> selected="selected" </if>
+                >空气温湿度采集器</option>
+                <option value="2"
+                <if condition="($data.device_type eq 2)"> selected="selected" </if>
+                >土壤温湿度采集器</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-6 col-sm-offset-2">
+            <button class="btn btn-primary form-control" type="submit">提交</button>
+        </div>
+    </div>
+    <script>
+        $().ready(function () {
+            $("select").select2({dropdownCssClass: 'dropdown-inverse'});
+        });
+    </script>
+</form>

@@ -1,5 +1,5 @@
 <div class="form-inline">
-    <button class="btn btn-default">新增</button>
+    <a class="btn btn-xs btn-primary" href="{:U('Device/add')}">新增</a>
 </div>
 <table class="table table-responsive table-bordered">
     <thead>
@@ -10,15 +10,15 @@
             <th>操作</th>
         </tr>
     </thead>
-    <foeach name="list" item="vo">
+    <volist name="list" id="vo">
         <tr>
-            <td>{$vo['deviceId']}</td>
-            <td>{$vo['deviceNumber']}</td>
-            <td>{$vo['deviceType']}</td>
+            <td>{$vo.device_id}</td>
+            <td>{$vo.device_number}</td>
+            <td>{$vo.device_type}</td>
             <td>
-                <a class="btn btn-info btn-xs">编辑</a>
-                <a class="btn btn-danger btn-xs">删除</a>
+                <a class="btn btn-info btn-xs" href={:U('Device/add',array('id'=>$vo['device_id']))} >编辑</a>
+                <a class="btn btn-danger btn-xs" href={:U('Device/delete',array('id'=>$vo['device_id']))} >删除</a>
             </td>
         </tr>
-    </foeach>
+    </volist>
 </table>
