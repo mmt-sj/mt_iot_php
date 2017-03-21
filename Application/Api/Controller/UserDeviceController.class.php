@@ -15,6 +15,9 @@ class UserDeviceController extends RestController
 {
     function add()
     {
+        if(IS_GET){
+            returnApiError("用户设备添加  参数 userId,deviceName,deviceType deviceNumber 添加成功后返回用户设备字段");
+        }
         if(IS_POST){
             $data['userId']=$_POST["userId"];
             $data["deviceName"]=$_POST["deviceName"];
@@ -26,7 +29,7 @@ class UserDeviceController extends RestController
                 $data["deviceId"]=$deviceRes["deviceId"];
                 $UserDevice=M('UserDevice');
                 $UserDevice->add($data);
-                returnApiSuccess("添加成功",$UserDevice);
+                returnApiSuccess("添加成功",$data);
             }else{
                 returnApiError("添加失败,该设备不存在");
             }

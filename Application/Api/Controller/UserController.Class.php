@@ -14,7 +14,9 @@ class UserController extends RestController
 {
     public function add()
     {
-
+        if(IS_GET){
+            returnApiError("用户注册 name phoneNumber password 注册成功后返回flag Success");
+        }
         if(IS_POST){
             $data['userName']=$_POST["name"];
             $data['phone']=$_POST["phoneNumber"];
@@ -22,12 +24,12 @@ class UserController extends RestController
             $User=M("User");
             $where['phone']=$data['phone'];
             $res= $User->where($where)->find();
-            if($res!=NULL){
+            if($res!=null){
                 returnApiError("该账户已存在");
             }
             else{
                 $User->add($data);
-                returnApiSuccess("","注册成功");
+                returnApiSuccess("注册成功");
             }
 
         }
@@ -39,7 +41,6 @@ class UserController extends RestController
             $User=M("User");
             $res= $User->where($data)->find();
             if($res!=NULL){
-
                 returnApiSuccess("",$res);
             }
             else{

@@ -8,7 +8,8 @@
         <th>手机号</th>
         <th>用户名</th>
         <th>设备数量</th>
-        <th>操作</th>
+        <th>盆栽数量</th>
+        <!--<th>操作</th>-->
     </tr>
     </thead>
     <volist name="list" id="vo">
@@ -16,9 +17,9 @@
             <td>{$vo.user_id}</td>
             <td>{$vo.phone}</td>
             <td>{$vo.user_name}</td>
-            <td>15</td>
-            <td><a href="detail?id={$vo.user_id}">查看</a></td>
-
+            <td><a href={:U('User/detail',array('id'=>$vo['user_id']))}>15</a></td>
+            <td><a href={:U('User/flowerDetail',array('id'=>$vo['user_id']))}>20</a></td>
+            <!--<td><a href="detail?id={$vo.user_id}">查看</a></td>-->
         </tr>
     </volist>
 </table>
