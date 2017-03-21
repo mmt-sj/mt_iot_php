@@ -1,0 +1,29 @@
+
+<div class="form-inline">
+    <label><span>用户名称:</span>{$user.user_name}</label>
+    <label style="margin-left: 15px;"><span>手机号码:</span>{$user.phone}</label>
+</div>
+<if condition="$flower !=null ">
+    <table class="table table-responsive table-bordered">
+        <thead>
+        <tr>
+            <th>盆栽ID</th>
+            <th>盆栽名称</th>
+            <th>盆栽图片</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+
+
+    </table>
+    <volist name="flower" id="vo">
+        <tr>
+            <td>{$vo.flower_id}</td>
+            <td>{$vo.flower_name}</td>
+            <td>{$vo.flower_image}</td>
+            <td><a >查看</a></td>
+        </tr>
+    </volist>
+    <else />
+    该用户没有任何盆栽
+</if>

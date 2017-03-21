@@ -1,0 +1,61 @@
+{__NOLAYOUT__}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<link href="__PUBLIC__/Static/Dist/flat/css/vendor/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+<link href="__PUBLIC__/Static/Dist/flat/css/flat-ui.min.css" type="text/css" rel="stylesheet">
+<script src="__PUBLIC__/Static/Dist/flat/js/vendor/jquery.min.js"></script>
+<script src="__PUBLIC__/Static/Dist/flat/js/vendor/html5shiv.js"></script>
+<script src="__PUBLIC__/Static/Dist/flat/js/vendor/respond.min.js"></script>
+<script src="__PUBLIC__/Static/Dist/flat/js/flat-ui.min.js"></script>
+<style>
+    .vertical-center{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+<body style="background-color: #1ABC9C">
+<form id="form" action="login/login" method="post" >
+    <div class="col-sm-6  vertical-center">
+        <div class="login-form">
+            <div class="form-group">
+                <input type="text" class="form-control login-field" id="admin_number" name="admin_number" placeholder="输入账号" >
+                <label class="login-field-icon fui-user" for="login-name"></label>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control login-field" id="admin_password" name="admin_password" placeholder="输入密码" >
+                <label class="login-field-icon fui-lock" for="login-pass"></label>
+            </div>
+            <p id="tip" style="color: #E74C3C; text-align: center"></p>
+            <button class="btn btn-primary btn-lg btn-block" id="submit" type="button">登  录</button>
+            <a class="login-link" href="#">忘记密码啦?</a>
+        </div>
+    </div>
+</form>
+</body>
+<script>
+    $().ready(function () {
+       $("#submit").click(function () {
+           $(this).html("正在登陆...");
+           $("#tip").html("");
+           $(this).addClass("disabled");
+           $.post("login/login",$("#form").serialize(),function (data) {
+               if (data.msg=="success"){
+                    window.location.href="Device/index";
+               }else {
+                   $("#tip").html(data.msg);
+                   $('#submit').html("登陆");
+                   $("#submit").removeClass("disabled");
+               }
+
+           });
+       });
+    });
+</script>
+</html>
