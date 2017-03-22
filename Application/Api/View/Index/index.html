@@ -3,6 +3,7 @@
 
 <button id="ajaxTest">注册</button>
 <button id ="addFlower">添加盆栽</button>
+<button id="pushData">发送数据</button>
 <script>
     $().ready(function () {
         $("#ajaxTest").click(function () {
@@ -21,6 +22,19 @@
                 type:"POST",
                 url:"Flowers/add",
                 data:{flower_name:"liuyidddasss",phone:"15366126076",flower_image_path:"123456"},
+                success:function (data) {
+                    var jsobObj=JSON.parse(data);
+                    alert(jsobObj.msg);
+                }
+            });
+        });
+
+        //
+        $("#pushData").click(function () {
+            $.ajax({
+                type:"POST",
+                url:"Device/pushData",
+                data:{device_number:"123456",data:"15366126076"},
                 success:function (data) {
                     var jsobObj=JSON.parse(data);
                     alert(jsobObj.msg);

@@ -16,3 +16,12 @@ CREATE TABLE IF NOT EXISTS `mt_flower`(
   device_id INT NOT NULL ,
   flower_id VARCHAR(32) NOT NULL
 );
+
+DROP TABLE  mt_device_data;
+CREATE TABLE IF NOT EXISTS `mt_device_data`(
+  device_data_id INT NOT NULL  AUTO_INCREMENT PRIMARY KEY ,
+  device_id INT NOT NULL ,
+  device_data VARCHAR(32) NOT NULL,
+  device_data_time varchar(32),
+  device_Data_ip varchar(32) not null
+);

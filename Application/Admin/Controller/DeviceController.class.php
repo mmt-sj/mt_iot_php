@@ -47,4 +47,5 @@ class DeviceController extends Controller
         $Device->delete($id);
         $this->redirect("Device/index");
     }
+
 }
