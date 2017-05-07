@@ -25,3 +25,12 @@ CREATE TABLE IF NOT EXISTS `mt_device_data`(
   device_data_time varchar(32),
   device_Data_ip varchar(32) not null
 );
+
+DROP TABLE  mt_custom_task;
+CREATE TABLE IF NOT EXISTS `mt_custom_task`(
+  custom_task_id INT NOT NULL  AUTO_INCREMENT PRIMARY KEY ,
+  user_id INT NOT NULL ,
+  device_data VARCHAR(32) NOT NULL,
+  device_data_time varchar(32),
+  device_Data_ip varchar(32) not null
+);
